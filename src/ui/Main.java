@@ -117,31 +117,40 @@ public class Main{
 	public void searchProjectsAfterDate() {
 		Calendar endDate = Calendar.getInstance();
 		String[] projects;
-		System.out.println("Proyectos que empiezan despues de");
-		endDate = inputDate(endDate);
+		if(controller.firstValidPosition() != 0) {
+			System.out.println("\nProyectos que empiezan despues de");
+			endDate = inputDate(endDate);
 
-		projects = controller.searchProjectsAfterDate(endDate);
+			projects = controller.searchProjectsAfterDate(endDate);
 
-		for(int i = 0; i < projects.length; i++) {
-			if(projects[i] != null) {
-				System.out.println("- "+projects[i]);
+			for(int i = 0; i < projects.length; i++) {
+				if(projects[i] != null) {
+					System.out.println("- "+projects[i]);
+				}
 			}
+		} else {
+			System.out.println("\nAun no hay proyectos creados");
 		}
 	}
 	
 	public void searchProjectsBeforeDate() {
 		Calendar endDate = Calendar.getInstance();
 		String[] projects;
-		System.out.println("\nProyectos que terminan antes de");
-		endDate = inputDate(endDate);
+		if(controller.firstValidPosition() == 0) {
+			System.out.println("\nProyectos que terminan antes de");
+			endDate = inputDate(endDate);
 
-		projects = controller.searchProjectsBeforeDate(endDate);
+			projects = controller.searchProjectsBeforeDate(endDate);
 
-		for(int i = 0; i < projects.length; i++) {
-			if(projects[i] != null) {
-				System.out.println("- "+projects[i]);
+			for(int i = 0; i < projects.length; i++) {
+				if(projects[i] != null) {
+					System.out.println("- "+projects[i]);
+				}
 			}
+		} else {
+			System.out.println("\nAun no hay proyectos creados");
 		}
+		
 	}
 
 	public Calendar inputDate(Calendar date) {
